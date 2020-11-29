@@ -58,11 +58,13 @@ class Game{
                      if(index === player.index){
                          
                          // to display player name on the basket.
-
+                         fill("black");
+                         textSize(25);
+                         text(allPlayers[plr].name ,x-25,y+25);
                          
                      }
                     
-                     //text to display player score.
+                     
                  
                  }
                 
@@ -101,6 +103,32 @@ class Game{
                   if (player.index !== null) {
                      //fill code here, to destroy the objects. (Use the one in the class project 39)
                      // add the condition to calculate the score. and use update ti update the values in the database.
+                     //text to display player score.
+                     fill(255);
+                     text("Player 1: " + p1score, 200, 300);
+                     text("Player 2: " + p2score, 200, 400);
+                     
+                     if (fruitGroup.isTouching(players)) {
+                        if (fruitGroup.isTouching(players[index-1])) {
+                            player.score+=1;
+                            p1score=allPlayers.player2.score+1;
+                            //console.log(allPlayers.player2.score);
+                        }
+
+                        else if (fruitGroup.isTouching(players[index-2])) {
+                            player.score+=1;
+                            p2score=allPlayers.player1.score+1;
+                            //console.log(allPlayers.player1.score);
+                        }
+
+                     for (var i = 0; i<fruitGroup.length; i++) {
+                        if (fruitGroup[i].isTouching(players)) {
+                            //console.log(i);
+                            fruitGroup[i].destroy();
+                        }
+                    }
+                     }
+                     player.update();
                   }
                 
 
